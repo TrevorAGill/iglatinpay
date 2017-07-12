@@ -12,28 +12,27 @@ $(document).ready(function() {
 
     var input = $("#sentenceinput").val();
     var inputArray = input.split("");
-    var char1 = inputArray[0];
-    var char2 = inputArray[1];
-    var char3 = inputArray[2];
     var firstVowelPosition = 0;
     var inputLength = input.length;
     firstChar = input.slice(0, 1);
 
     for(i=0 ; i < inputArray.length ; i++){
-      if(inputArray[i]==="a" || inputArray[i]==="e" || inputArray[i]==="i" || inputArray[i]==="o" || inputArray[i]==="u") {
-          firstVowelPosition = i;
-          var slice = input.slice(0,firstVowelPosition);
-          var slice2 = input.slice(firstVowelPosition);
-          var output = slice2 + slice + "ay";
-          inputArray = [];
-          debugger;
+      if(inputArray[i]==="q" && inputArray[i + 1] === "u") {
+        var uPosition = i + 2;
+        var slice = input.slice(0, uPosition);
+        var slice2 = input.slice(uPosition);
+        var output = slice2 + slice + "ay";
+        inputArray = [];
+
+      } else if (inputArray[i]==="a" || inputArray[i]==="e" || inputArray[i]==="i" || inputArray[i]==="o" || inputArray[i]==="u") {
+        firstVowelPosition = i;
+        var slice = input.slice(0,firstVowelPosition);
+        var slice2 = input.slice(firstVowelPosition);
+        var output = slice2 + slice + "ay";
+        inputArray = [];
       }
     }
-    alert(output);
-
-
-
-
+      alert(output);
 
 
     for (var i = 0 ; i < vowels.length; i++) {
@@ -42,19 +41,5 @@ $(document).ready(function() {
       }
     }
 
-
-    // } else if {
-    //   if(firstChar !== vowels[i]) {
-    //   input =   + "ay"
-    // }
-      alert(input);
-
-
-    // vowels.forEach(function(vowel) {
-    //   if (input === vowel) {
-    //     alert(input + "way");
-    //   } else {
-    //     alert("Please enter something");
-    //   }
   });
 });
